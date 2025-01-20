@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">StudentsAppColman</string>
+    <string name="student_id">StudentsAppColman</string>
+    <string name="student_image">StudentsAppColman</string>
+    <string name="student_name">StudentsAppColman</string>
+    <string name="add_student">StudentsAppColman</string>
+    <string name="name">name</string>
+    <string name="id">id</string>
+    <string name="phone">phone</string>
+    <string name="address">address</string>
+    <string name="checked">checked</string>
+    <string name="save">save</string>
+    <string name="cancel">cancel</string>
+</resources>
