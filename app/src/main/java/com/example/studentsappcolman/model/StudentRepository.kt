@@ -9,8 +9,14 @@ object StudentRepository {
 
     fun addStudent(student: Student) {
         students.add(student)
+    }
 
-        Log.d("wtfff", "onResume: " +getStudents().size)
+    fun findById(id: String): Student? {
+        return students.find { it.id == id }
+    }
+
+    fun deleteById(id: String) {
+        students.removeAll { it.id == id }
     }
 
     fun updateStudent(index: Int, updatedStudent: Student) {

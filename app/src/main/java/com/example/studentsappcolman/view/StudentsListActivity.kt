@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.studentsappcolman.R
@@ -16,16 +17,19 @@ class StudentsListActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: StudentAdapter
     private lateinit var addButton: FloatingActionButton
+    private lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_students_list)
 
-        // Initialize UI components
         recyclerView = findViewById(R.id.recyclerView)
         addButton = findViewById(R.id.addButton)
+        toolbar = findViewById(R.id.toolbar)
 
-        // Set up RecyclerView
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(true)
+
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = StudentAdapter(
             StudentRepository.getStudents(),
@@ -33,7 +37,6 @@ class StudentsListActivity : AppCompatActivity() {
         )
         recyclerView.adapter = adapter
 
-        // Add new student
         addButton.setOnClickListener {
             startActivity(Intent(this, NewStudentActivity::class.java))
         }
@@ -47,9 +50,9 @@ class StudentsListActivity : AppCompatActivity() {
     }
 
     private fun openStudentDetails(position: Int) {
-//        val intent = Intent(this, StudentDetailsActivity::class.java)
-//        intent.putExtra("STUDENT_INDEX", position)
-//        startActivity(intent)
+        val intent = Intent(this, StudentDetailsActivity::class.java)
+        intent.putExtra("STUDENT_INDEX", position)
+        startActivity(intent)
     }
 
     private fun toggleStudentCheckStatus(position: Int) {

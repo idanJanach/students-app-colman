@@ -13,6 +13,12 @@
         android:theme="@style/Theme.StudentsAppColman"
         tools:targetApi="31">
         <activity
+            android:name=".view.EditStudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.StudentDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.NewStudentActivity"
             android:exported="false" />
         <activity
