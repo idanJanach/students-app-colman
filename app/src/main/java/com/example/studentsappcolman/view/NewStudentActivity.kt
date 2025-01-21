@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.example.studentsappcolman.R
 import com.example.studentsappcolman.model.Student
 import com.example.studentsappcolman.model.StudentRepository
@@ -19,6 +20,7 @@ class NewStudentActivity : AppCompatActivity() {
     private lateinit var checkedCheckBox: CheckBox
     private lateinit var saveButton: Button
     private lateinit var cancelButton: Button
+    private lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +34,15 @@ class NewStudentActivity : AppCompatActivity() {
         checkedCheckBox = findViewById(R.id.checkedCheckBox)
         saveButton = findViewById(R.id.saveButton)
         cancelButton = findViewById(R.id.cancelButton)
+        toolbar = findViewById(R.id.toolbar)
 
+        // Setup Toolbar
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = getString(R.string.edit_student)
+        toolbar.setNavigationOnClickListener {
+            finish()
+        }
         // Save new student
         saveButton.setOnClickListener {
             saveNewStudent()

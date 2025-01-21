@@ -11,4 +11,10 @@
     <string name="checked">checked</string>
     <string name="save">save</string>
     <string name="cancel">cancel</string>
+    <string name="edit">edit</string>
+    <string name="delete">edit</string>
+    <string name="student_list">student list</string>
+    <string name="edit_student">edit student</string>
+    <string name="new_student">new student</string>
+    <string name="student_details">student details</string>
 </resources>
