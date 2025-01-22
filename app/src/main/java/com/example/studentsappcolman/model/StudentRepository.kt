@@ -3,7 +3,7 @@ package com.example.studentsappcolman.model
 import android.util.Log
 
 object StudentRepository {
-    private val students = mutableListOf<Student>(Student("1","1","1","1",true))
+    private val students = mutableListOf<Student>()
 
     fun getStudents(): List<Student> = students
 
