@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">StudentsAppColman</string>
-    <string name="student_id">StudentsAppColman</string>
-    <string name="student_image">StudentsAppColman</string>
-    <string name="student_name">StudentsAppColman</string>
-    <string name="add_student">StudentsAppColman</string>
     <string name="name">name</string>
     <string name="id">id</string>
     <string name="phone">phone</string>
@@ -12,7 +8,7 @@
     <string name="save">save</string>
     <string name="cancel">cancel</string>
     <string name="edit">edit</string>
-    <string name="delete">edit</string>
+    <string name="delete">delete</string>
     <string name="student_list">student list</string>
     <string name="edit_student">edit student</string>
     <string name="new_student">new student</string>

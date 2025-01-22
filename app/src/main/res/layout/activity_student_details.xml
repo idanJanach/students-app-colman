@@ -23,8 +23,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/ic_student"
-        android:contentDescription="@string/student_image"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="16dp" />
 

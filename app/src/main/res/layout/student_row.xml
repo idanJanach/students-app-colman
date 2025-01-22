@@ -11,7 +11,6 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:src="@drawable/ic_student"
-        android:contentDescription="@string/student_image"
         android:layout_marginEnd="8dp" />
 
     <LinearLayout
@@ -26,13 +25,13 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="16sp"
-            android:text="@string/student_name" />
+            android:text="@string/name" />
 
         <TextView
             android:id="@+id/idTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/student_id" />
+            android:text="@string/id" />
     </LinearLayout>
 
     <CheckBox

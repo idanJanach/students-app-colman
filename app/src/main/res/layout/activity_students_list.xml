@@ -37,7 +37,7 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
         android:backgroundTint="@color/teal_700"
-        android:contentDescription="@string/add_student"
+        android:contentDescription="@string/new_student"
         android:src="@drawable/ic_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
