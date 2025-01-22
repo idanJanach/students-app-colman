@@ -54,10 +54,4 @@ class StudentsListActivity : AppCompatActivity() {
         intent.putExtra("STUDENT_INDEX", position)
         startActivity(intent)
     }
-
-    private fun toggleStudentCheckStatus(position: Int) {
-        val student = StudentRepository.getStudents()[position]
-        student.isChecked = !student.isChecked
-        adapter.notifyItemChanged(position)
-    }
 }

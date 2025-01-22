@@ -26,7 +26,6 @@ class NewStudentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_student)
 
-        // Initialize UI components
         nameEditText = findViewById(R.id.nameEditText)
         idEditText = findViewById(R.id.idEditText)
         phoneEditText = findViewById(R.id.phoneEditText)
@@ -36,19 +35,17 @@ class NewStudentActivity : AppCompatActivity() {
         cancelButton = findViewById(R.id.cancelButton)
         toolbar = findViewById(R.id.toolbar)
 
-        // Setup Toolbar
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = getString(R.string.new_student)
         toolbar.setNavigationOnClickListener {
             finish()
         }
-        // Save new student
+
         saveButton.setOnClickListener {
             saveNewStudent()
         }
 
-        // Cancel and return to the student list
         cancelButton.setOnClickListener {
             finish()
         }
@@ -70,11 +67,9 @@ class NewStudentActivity : AppCompatActivity() {
             return
         }
 
-        // Add new student to the repository
         val newStudent = Student(name, id, phone, address, isChecked)
         StudentRepository.addStudent(newStudent)
 
-        // Return to the previous screen and update the list
         setResult(Activity.RESULT_OK)
         finish()
     }

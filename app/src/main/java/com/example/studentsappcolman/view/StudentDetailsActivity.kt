@@ -38,7 +38,6 @@ class StudentDetailsActivity : AppCompatActivity() {
         editButton = findViewById(R.id.editButton)
         toolbar = findViewById(R.id.toolbar)
 
-        // Setup Toolbar
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = getString(R.string.student_details)

@@ -1,6 +1,5 @@
 package com.example.studentsappcolman.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,6 @@ import com.example.studentsappcolman.model.Student
 class StudentAdapter(
     private var students: List<Student>,
     private val onRowClick: (Int) -> Unit,
-//    private val onCheckChange: (Int) -> Unit
 ) : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentViewHolder {
@@ -29,12 +27,6 @@ class StudentAdapter(
 
     override fun getItemCount(): Int = students.size
 
-    fun updateStudents(newStudents: List<Student>) {
-        Log.d("studentlist", "updateStudents: length " + newStudents.size)
-        students = newStudents
-        notifyDataSetChanged()
-    }
-
     class StudentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nameTextView: TextView = itemView.findViewById(R.id.nameTextView)
         private val idTextView: TextView = itemView.findViewById(R.id.idTextView)
@@ -45,10 +37,14 @@ class StudentAdapter(
             nameTextView.text = student.name
             idTextView.text = student.id
             checkBox.isChecked = student.isChecked
-            profileImageView.setImageResource(R.drawable.ic_student) // Static image
+            profileImageView.setImageResource(R.drawable.ic_student)
 
             itemView.setOnClickListener { onRowClick(index) }
-//            checkBox.setOnCheckedChangeListener { _, _ -> onCheckChange(index) }
+            checkBox.apply {
+                setOnClickListener { view ->
+                    student?.isChecked = (view as? CheckBox)?.isChecked ?: false
+                }
+            }
         }
     }
 }
