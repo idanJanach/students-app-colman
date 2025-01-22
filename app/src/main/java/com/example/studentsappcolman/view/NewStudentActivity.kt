@@ -39,7 +39,7 @@ class NewStudentActivity : AppCompatActivity() {
         // Setup Toolbar
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = getString(R.string.edit_student)
+        supportActionBar?.title = getString(R.string.new_student)
         toolbar.setNavigationOnClickListener {
             finish()
         }

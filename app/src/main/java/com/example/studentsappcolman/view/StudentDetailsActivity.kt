@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.studentsappcolman.R
@@ -21,6 +22,7 @@ class StudentDetailsActivity : AppCompatActivity() {
     private lateinit var addressTextView: TextView
     private lateinit var checkedTextView: TextView
     private lateinit var editButton: Button
+    private lateinit var toolbar: Toolbar
 
     private var studentIndex: Int = -1
 
@@ -34,6 +36,15 @@ class StudentDetailsActivity : AppCompatActivity() {
         addressTextView = findViewById(R.id.addressTextView)
         checkedTextView = findViewById(R.id.checkedTextView)
         editButton = findViewById(R.id.editButton)
+        toolbar = findViewById(R.id.toolbar)
+
+        // Setup Toolbar
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = getString(R.string.student_details)
+        toolbar.setNavigationOnClickListener {
+            finish()
+        }
 
         studentIndex = intent.getIntExtra("STUDENT_INDEX", -1)
 
