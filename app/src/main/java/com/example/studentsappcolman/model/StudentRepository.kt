@@ -1,19 +1,24 @@
 package com.example.studentsappcolman.model
 
-object StudentRepository {
+class StudentRepository {
+
     private val students = mutableListOf<Student>()
 
-    fun getStudents(): List<Student> = students
+    companion object{
+        val shared = StudentRepository()
+    }
+
+    fun getStudents(): List<Student> = shared.students
 
     fun addStudent(student: Student) {
-        students.add(student)
+        shared.students.add(student)
     }
 
     fun findById(id: String): Student? {
-        return students.find { it.id == id }
+        return shared.students.find { it.id == id }
     }
 
     fun deleteById(id: String) {
-        students.removeAll { it.id == id }
+        shared.students.removeAll { it.id == id }
     }
 }

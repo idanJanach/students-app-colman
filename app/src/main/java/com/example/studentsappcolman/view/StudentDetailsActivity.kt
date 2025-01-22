@@ -23,6 +23,7 @@ class StudentDetailsActivity : AppCompatActivity() {
     private lateinit var checkedTextView: TextView
     private lateinit var editButton: Button
     private lateinit var toolbar: Toolbar
+    private lateinit var studentRepo: StudentRepository
 
     private var studentIndex: Int = -1
 
@@ -37,6 +38,7 @@ class StudentDetailsActivity : AppCompatActivity() {
         checkedTextView = findViewById(R.id.checkedTextView)
         editButton = findViewById(R.id.editButton)
         toolbar = findViewById(R.id.toolbar)
+        studentRepo = StudentRepository.shared
 
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -52,7 +54,7 @@ class StudentDetailsActivity : AppCompatActivity() {
         }
 
         editButton.setOnClickListener {
-            val student: Student = StudentRepository.getStudents()[studentIndex]
+            val student: Student = studentRepo.getStudents()[studentIndex]
             val intent = Intent(this, EditStudentActivity::class.java)
             intent.putExtra("STUDENT_ID", student.id)
             startActivity(intent)
@@ -68,7 +70,7 @@ class StudentDetailsActivity : AppCompatActivity() {
     }
 
     private fun displayStudentDetails() {
-        val student: Student = StudentRepository.getStudents()[studentIndex]
+        val student: Student = studentRepo.getStudents()[studentIndex]
         nameTextView.text = student.name
         idTextView.text = student.id
         phoneTextView.text = student.phone

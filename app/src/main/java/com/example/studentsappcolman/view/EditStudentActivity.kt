@@ -1,5 +1,6 @@
 package com.example.studentsappcolman.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
@@ -22,6 +23,7 @@ class EditStudentActivity : AppCompatActivity() {
     private lateinit var deleteButton: Button
     private lateinit var cancelButton: Button
     private lateinit var toolbar: Toolbar
+    private lateinit var studentRepo: StudentRepository
 
     private var studentId: String? = null
     private var student: Student? = null
@@ -39,6 +41,7 @@ class EditStudentActivity : AppCompatActivity() {
         saveButton = findViewById(R.id.saveButton)
         deleteButton = findViewById(R.id.deleteButton)
         cancelButton = findViewById(R.id.cancelButton)
+        studentRepo = StudentRepository.shared
 
         // Setup Toolbar
         setSupportActionBar(toolbar)
@@ -55,7 +58,7 @@ class EditStudentActivity : AppCompatActivity() {
             return
         }
 
-        student = StudentRepository.findById(studentId!!)
+        student = studentRepo.findById(studentId!!)
         if (student == null) {
             Toast.makeText(this, "Student not found", Toast.LENGTH_SHORT).show()
             finish()
@@ -101,9 +104,14 @@ class EditStudentActivity : AppCompatActivity() {
         finish()
     }
 
+    private fun goToStudentList(){
+        val intent = Intent(this, StudentsListActivity::class.java)
+        startActivity(intent)
+    }
     private fun deleteStudent() {
-        StudentRepository.deleteById(studentId!!)
+        studentRepo.deleteById(studentId!!)
         Toast.makeText(this, "Student deleted successfully", Toast.LENGTH_SHORT).show()
+        goToStudentList()
         finish()
     }
 }

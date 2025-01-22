@@ -21,6 +21,7 @@ class NewStudentActivity : AppCompatActivity() {
     private lateinit var saveButton: Button
     private lateinit var cancelButton: Button
     private lateinit var toolbar: Toolbar
+    private lateinit var studentRepo: StudentRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,7 @@ class NewStudentActivity : AppCompatActivity() {
         saveButton = findViewById(R.id.saveButton)
         cancelButton = findViewById(R.id.cancelButton)
         toolbar = findViewById(R.id.toolbar)
+        studentRepo = StudentRepository.shared
 
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -68,7 +70,7 @@ class NewStudentActivity : AppCompatActivity() {
         }
 
         val newStudent = Student(name, id, phone, address, isChecked)
-        StudentRepository.addStudent(newStudent)
+        studentRepo.addStudent(newStudent)
 
         setResult(Activity.RESULT_OK)
         finish()

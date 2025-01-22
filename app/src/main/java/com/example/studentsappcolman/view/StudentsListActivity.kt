@@ -18,6 +18,7 @@ class StudentsListActivity : AppCompatActivity() {
     private lateinit var adapter: StudentAdapter
     private lateinit var addButton: FloatingActionButton
     private lateinit var toolbar: Toolbar
+    private lateinit var studentRepo: StudentRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,13 +27,14 @@ class StudentsListActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         addButton = findViewById(R.id.addButton)
         toolbar = findViewById(R.id.toolbar)
+        studentRepo = StudentRepository.shared
 
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(true)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = StudentAdapter(
-            StudentRepository.getStudents(),
+            studentRepo.getStudents(),
             onRowClick = { position -> openStudentDetails(position) },
         )
         recyclerView.adapter = adapter
@@ -44,7 +46,7 @@ class StudentsListActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        Log.d("wtfff", "onResume: " +StudentRepository.getStudents().size)
+        Log.d("wtfff", "onResume: " +studentRepo.getStudents().size)
         // Refresh the list when returning to this Activity
         adapter.notifyDataSetChanged()
     }
